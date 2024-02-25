@@ -15,7 +15,7 @@
     font-family: "Inter", sans-serif;
     color: var(--c-text-primary);
     /* background-color: var(--c-background-primary); */
-    line-height: 3.5;
+    line-height: 2;
   }
   
   input, button, select, textarea {
@@ -23,40 +23,40 @@
   }
   
   .modal {
-    width: 315%;
-    max-width: 1750px;
+    width: 180%;
+    max-width: 1000px;
     background-color: #FFF;
-    border-radius: 1.75rem; /* 0.5rem * 1.5 */
-    box-shadow: 0 17.5px 52.5px rgba(0, 0, 0, 0.2); /* 5px * 1.5, 15px * 1.5 */
+    border-radius: 1rem; /* 0.5rem * 1.5 */
+    box-shadow: 0 1px 30px rgba(0, 0, 0, 0.2); /* 5px * 1.5, 15px * 1.5 */
   }
   
   .modal-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 5.25rem 5.25rem 2.916666666666667rem; /* 1.5rem * 1.5 */
+    padding: 3rem 3rem 2rem; /* 1.5rem * 1.5 */
   }
   
   .logo-circle {
-    width: 12.25rem; /* 3.5rem * 1.5 */
-    height: 12.25rem; /* 3.5rem * 1.5 */
+    width: 7rem; /* 3.5rem * 1.5 */
+    height: 7rem; /* 3.5rem * 1.5 */
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 175%; /* 50% * 1.5 */
+    border-radius: 100%; /* 50% * 1.5 */
     background-color: var(--c-action-primary-accent);
   }
   .logo-circle svg {
-    max-width: 5.25rem; /* 1.5rem * 1.5 */
+    max-width: 3rem; /* 1.5rem * 1.5 */
   }
   
   .btn-close {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 7.875rem; /* 2.25rem * 1.5 */
-    height: 7.875rem; /* 2.25rem * 1.5 */
-    border-radius: 0.875rem; /* 0.25rem * 1.5 */
+    width: 4.5rem; /* 2.25rem * 1.5 */
+    height: 4.5rem; /* 2.25rem * 1.5 */
+    border-radius: 0.5rem; /* 0.25rem * 1.5 */
     border: none;
     background-color: transparent;
   }
@@ -66,12 +66,12 @@
   }
   
   .modal-body {
-    padding: 3.5rem 5.25rem; /* 1rem * 1.5 */
+    padding: 2rem 3rem; /* 1rem * 1.5 */
   }
   
   .modal-title {
-    font-weight: 1633.3333333333335;
-    font-size: 3.5em; /* Increase font size */
+    font-weight: 933.3333333333334;
+    font-size: 2em; /* Increase font size */
   }
   
   .modal-description {
@@ -79,12 +79,12 @@
   }
   
   .upload-area {
-    margin-top: 4.375rem; /* 1.25rem * 1.5 */
+    margin-top: 2.5rem; /* 1.25rem * 1.5 */
     border: none;
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23ccc' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
     background-color: transparent;
-    padding: 10.5rem; /* 3rem * 1.5 */
-    width: 100%;
+    padding: 6rem; /* 3rem * 1.5 */
+    width: 133.33333333333334%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,8 +96,8 @@
   
   .upload-area-icon {
     display: block;
-    width: 7.875rem; /* 2.25rem * 1.5 */
-    height: 7.875rem; /* 2.25rem * 1.5 */
+    width: 4.5rem; /* 2.25rem * 1.5 */
+    height: 4.5rem; /* 2.25rem * 1.5 */
   }
 
   .upload-area-icon svg {
@@ -106,45 +106,45 @@
   }
   
   .upload-area-title {
-    margin-top: 3.5rem; /* 1rem * 1.5 */
+    margin-top: 2rem; /* 1rem * 1.5 */
     display: block;
-    font-weight: 1633.3333333333335;
+    font-weight: 933.3333333333334;
     color: var(--c-text-primary);
-    font-size: 3.5em; /* Increase font size */
+    font-size: 2em; /* Increase font size */
   }
 
   .upload-area-description {
     display: block;
     color: var(--c-text-secondary);
-    font-size: 3.5em;
+    font-size: 2em;
   }
   
   .upload-area-description strong{
     color: var(--c-action-primary);
-    font-weight: 1633.3333333333335;
-    font-size: 3.5em; /* Increase font size */
+    font-weight: 933.3333333333334;
+    font-size: 2em; /* Increase font size */
   }
   
   .modal-footer {
-    padding: 3.5rem 5.25rem 5.25rem; /* 1rem * 1.5 */
+    padding: 2rem 3rem 3rem; /* 1rem * 1.5 */
     display: flex;
     justify-content: flex-end;
   }
   
   .modal-footer [class*=btn-] {
-    margin-left: 2.625rem; /* 0.75rem * 1.5 */
+    margin-left: 1.5rem; /* 0.75rem * 1.5 */
   }
   
   .btn-secondary, .btn-primary {
-    padding: 1.75rem 3.5rem; /* 0.5rem * 1.5 */
-    font-weight: 1166.6666666666665;
-    border: 7px solid var(--c-action-secondary); /* 2px * 1.5 */
-    border-radius: 0.875rem; /* 0.25rem * 1.5 */
+    padding: 1rem 2rem; /* 0.5rem * 1.5 */
+    font-weight: 666.6666666666666;
+    border: 4px solid var(--c-action-secondary); /* 2px * 1.5 */
+    border-radius: 0.5rem; /* 0.25rem * 1.5 */
     background-color: transparent;
   }
   
   .btn-primary {
     color: #FFF;
     background-color: var(--c-action-primary);
-    font-size: 3.5em; /* Increase font size */
+    font-size: 2em; /* Increase font size */
   }

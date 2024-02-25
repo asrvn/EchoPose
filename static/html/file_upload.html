@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>CodePen - File upload</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/style2.css">
 
 </head>
 <body>
@@ -12,7 +12,12 @@
 <div class="modal">
 	<div class="modal-header">
 		<div class="modal-logo">
+			<div style="text-align: center;">
+				<h2 class="modal-title">Upload a file</h2>
+				<p class="modal-description">Attach the file below</p>
+			</div>
 			<span class="logo-circle">
+				
 				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="419.116" viewBox="0 0 512 419.116">
 					<defs>
 						<clipPath id="clip-folder-new">
@@ -25,14 +30,15 @@
 				</svg>
 			</span>
 		</div>
-		<button class="btn-close">
+		<!-- <button class="btn-close">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" fill="var(--c-text-secondary)"/></svg>
-		</button>
+		</button> -->
 	</div>
 	<div class="modal-body">
-		<h2 class="modal-title">Upload a file</h2>
-		<p class="modal-description">Attach the file below</p>
-		<button class="upload-area">
+		<!-- <h2 class="modal-title">Upload a file</h2>
+		<p class="modal-description">Attach the file below</p> -->
+		<h1 id="fileDisplay" style="display:none; font-size: xx-large; text-align: center;">File Display</h1>
+		<button class="upload-area" id="dropBox">
 			<span class="upload-area-icon">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="340.531" height="419.116" viewBox="0 0 340.531 419.116">
   <g id="files-new" clip-path="url(#clip-files-new)">
@@ -41,9 +47,9 @@
 </svg>
 			</span>
 			<span class="upload-area-title">Drag file(s) here to upload.</span>
-			<span class="upload-area-description">
+			<!-- <span class="upload-area-description">
 				Alternatively, you can select a file by <br/><strong>clicking here</strong>
-			</span>
+			</span> -->
 		</button>
 	</div>
 	<div class="modal-footer">
