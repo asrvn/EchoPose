@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, request
 import os
+import wrapper
 
 app = Flask(__name__)
 
@@ -58,7 +59,7 @@ def upload_files():
     blobPath = os.path.join(target_directory, blob.filename)
     blob.save(blobPath)
 
-    print("SAVED")
+    wrapper.main(blobPath)
     # referenceFilePath = os.path.join(target_directory, referenceFile.filename)
     # userFilePath = os.path.join(target_directory, userFile.filename)
 
