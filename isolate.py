@@ -7,7 +7,6 @@ ksize = (5, 5)
 
 img = cv2.imread('input_img.jpg')
 
-
 noBG = SelfiSegmentation().removeBG(img, BGcolor, 0.50)
 
 parse = cv2.GaussianBlur(cv2.cvtColor(noBG, cv2.COLOR_BGR2GRAY), ksize, 0)

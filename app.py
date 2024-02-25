@@ -53,7 +53,7 @@ with mp_pose.Pose(min_detection_confidence = 0.8, min_tracking_confidence = 0.8)
     while capture.isOpened():
 
         read, canvas = capture.read()
-        
+
         if not read:
 
             print("Dropped a Frame")
@@ -81,7 +81,7 @@ with mp_pose.Pose(min_detection_confidence = 0.8, min_tracking_confidence = 0.8)
 
             )
 
-            log.write(str(coordinates(processed))[1:-1] + "\n")
+            log.write(f"{coordinates(processed)[1:-1]}\n")
 
         else:
 
