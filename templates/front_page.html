@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoPose</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+</head>
+
+
+  
+    <style> 
+        * {
+            margin:0;
+            padding:0
+        }
+
+        body {
+            margin : 0;
+            padding : 0;
+            /* <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+            <script>
+                AOS.init();
+            </script> */
+        }
+
+        div.title {
+            background-color: rgb(139, 240, 241);
+            font-family: "Space Mono", monospace;
+            display : table;
+            height : 45vh;
+            width : 100%;
+        }
+
+        /* div.title::before {
+            content : "";
+            position: absolute;
+            left : 0;
+            right : 0;
+            bottom : 60.5vh;
+            height : 100px;
+            background-color: rgb(8, 99, 35);
+            transform : skewY(-2deg)
+        } */
+
+        div.baseline {
+            background-color: rgb(8, 99, 35);
+            height : 300px;
+        }
+        
+        h1.title {
+            font-size: 10rem;
+            /* font-family: "Space Mono", monospace; */
+            display : table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .item {
+            width: 200px;
+            height: 200px;
+            margin: 50px auto;
+            padding-top: 75px;
+            background: #ccc;
+            text-align: center;
+            color: #FFF;
+            font-size: 3em;
+        }
+
+
+    </style>
+
+    <body style="background-color: rgb(75, 67, 67);">
+        <div class="title">
+            <h1 class="title" data-aos="fade-right">ECHOPOSE</h1>
+        </div>
+        <div class="baseline">
+        </div>
+
+    </body>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- <script></script> -->
+    <script>
+    // AOS.init();
+        AOS.init({duration: 2400,}); 
+
+    </script>
+</html>
