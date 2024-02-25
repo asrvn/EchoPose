@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoPose</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+    <style>
+        /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+        body {
+            margin: 0;
+        }
+        
+        h1 {
+        font-size: 2em;
+        margin: 0.67em 0;
+        }
+    
+        hr {
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        height: 0;
+        }
+        
+        * {
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        }
+        
+        body {
+        font-family: "Space Mono", monospace;
+        font-size: 14px;
+        line-height: 1.42857;
+        color: #333;
+        background-color: #f2f3f8;
+        }        
+        
+        hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid #34495e;
+        }
+        
+        h1,
+        h2,
+        h3,
+        .h1,
+        .h2,
+        .h3 {
+        font-family: "Space Mono" monospace;
+        font-weight: 500;
+        line-height: 1.1;
+        color: #34495e;
+        }
+        h1 small,
+        h1 .small,
+        h2 small,
+        h2 .small,
+        h3 small,
+        h3 .small {
+        font-weight: normal;
+        line-height: 1;
+        color: #999;
+        }
+        h1,
+        .h1,
+        h2,
+        .h2,
+        h3,
+        .h3 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        }
+        h1 small,
+        h1 .small,
+        .h1 small,
+        .h1 .small,
+        h2 small,
+        h2 .small,
+        .h2 small,
+        .h2 .small,
+        h3 small,
+        h3 .small,
+        .h3 small,
+        .h3 .small {
+        font-size: 65%;
+        }
+        
+        h1,
+        .h1 {
+        font-size: 36px;
+        }
+        h2,
+        .h2 {
+        font-size: 30px;
+        }
+        h3,
+        .h3 {
+        font-size: 24px;
+        }
+
+        .col-md-4 {
+            float: left;
+            width : 33.33333%;
+            position: relative;
+            min-height: 1px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .col-md-8 {
+            float : left;
+            width : 66.66667%;
+            position: relative;
+            min-height: 1px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .jumbotron {
+        padding: 30px;
+        color: #fff;
+        background-color: #eee;
+        height: 700px;
+        background: -webkit-linear-gradient(
+            rgba(52, 73, 94, 0.8),
+            rgba(52, 73, 94, 0.8)
+            ),
+             no-repeat center
+            center fixed;
+        background: linear-gradient(rgba(52, 73, 94, 0.8), rgba(52, 73, 94, 0.8)),
+            no-repeat center
+            center fixed;
+        background-size: cover;
+        text-transform: capitalize;
+        }
+        .jumbotron hr {
+        width: 30%;
+        margin: 5px auto;
+        border-color: #eee;
+        }
+        .jumbotron h1,
+        .jumbotron .h1 {
+        color: inherit;
+        font-size: 56px;
+        text-align: center;
+        margin: 0 auto;
+        font-weight: 100;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        }
+        .jumbotron h2,
+        .jumbotron .h2 {
+        font-weight: 100;
+        letter-spacing: 2px;
+        color: inherit;
+        }
+
+        .section {
+        font-size: 56px;
+        text-align: center;
+        margin-top: 35px;
+        letter-spacing: 3px;
+        font-weight: 500;
+        color: #34495e;
+        text-transform: capitalize;
+        }
+        .section hr {
+        width: 100px;
+        height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <div class="jumbotron">
+      <div style="margin-top:130px" class="container">
+        <h1 data-aos="fade-left">EchoPose</h1>
+        <br><hr><hr>
+        <h2 style="text-align:center" data-aos="fade-right">Pose Tracking</h2>
+      </div>
+    </div>
+
+    <!-- <div style="display : block; text-align: center;">
+      <video width="320" height="240" controls autoplay muted>
+        <source src="/static/video.mp4" type="video/mp4" >
+        Your browser does not support the video tag.
+      </video>
+    </div> -->
+    
+    
+    <div class="section" id="about"><h1>About</h1><hr></div>
+
+
+    <!-- About Me -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div style="text-align:center;">
+            <img src="/static/AnikethPFP.png" style="height:50%; width:50%; margin:auto" >
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div>
+            <h3>Aniketh Luchmapurkar</h3>
+            <p>ljkdafsklsfa</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div></div>
+    
+    
+
+
+    <!-- <br> -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- <script></script> -->
+    <script>
+    // AOS.init();
+        AOS.init({duration: 2400,}); 
+
+    </script>
+    
+</body>
+</html>
