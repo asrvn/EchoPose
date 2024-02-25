@@ -122,7 +122,7 @@
         padding: 30px;
         color: #fff;
         background-color: #eee;
-        height: 100vh;
+        height: 50vh;
         background: -webkit-linear-gradient(
             rgba(52, 73, 94, 0.8),
             rgba(52, 73, 94, 0.8)
@@ -174,15 +174,22 @@
 
 
 
-        .button {
-        background-color: rgb(0, 0, 0);
-        border-radius: 10px;
-        color: rgb(255, 255, 255);
-        text-align: center;
-        /* .button:hover{
-
-        } */
-      }
+      .button {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      /* text-decoration: none; */
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
 
     </style>
 </head>
@@ -220,12 +227,21 @@
 
     <!-- <div w3-include-html="/static/file_upload.html"></div> -->
     <!-- <object type="text" data="file_upload.html" width="50%" height="50%"></object> -->
+    <div style="text-align:center; display: none" id="loading">
+      <iframe src ="/static/html/loading.html" width="300px" height="6500px" style="border: none"></iframe>
+    </div>
+
+
+
+
+
     <div>
-      <div style="margin-bottom: 50px">
+      <div id="uploads" style="margin-bottom: 50px">
         <iframe src="/static/html/file_upload.html" width="700px" height="700px" style="border: none; margin-left:7%; margin-top: 2%" id="reference_upload"></iframe>
         <iframe src="/static/html/file_upload.html" width="700px" height="700px" style="border: none; margin-right: 7%; margin-top: 2%; float:right" id="user_upload"></iframe>
       </div>
-      
+
+
       
       <div id="reference_youtube" style="float:left; text-align: right; margin-left: 15%; display:block">
         <div style="margin-bottom:5px">
@@ -242,7 +258,9 @@
     </div>
 
 
-
+    <div style>
+      <button class="button" id="button">Submit</button>
+    </div>
 
 
 
@@ -262,17 +280,14 @@
 
 
 
-    <br>
-    <div >
-      <button class="button" id="button" onclick="" style="font-family: 'Space Mono',monospace; font-size: 25px; text-align: center;">SUBMIT</button>
-    </div>
+    <br><br><br><br><br><br><br><br>
+
     
-    <div style="margin:2%">
+    <div id="output" style="margin:2%; display: none">
       <iframe src="/static/html/output.html" width="100%" height="600px" style="border: 0px solid black"></iframe>
     </div>
 
-    <!-- About Me -->
-    <div class="container">
+    <!-- <div class="container">
       <div class="row">
         <div class="col-md-4">
           <div style="text-align:center;">
@@ -288,13 +303,13 @@
       </div>
     </div>
     <div></div>
-    
+     -->
     
 
 
     <!-- <br> -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <!-- <script></script> -->
+    <script></script>
     <script>
         AOS.init({duration: 2400,}); 
         
@@ -351,6 +366,8 @@
     let reference_fileDisplay = reference_innerDoc.getElementById('fileDisplay');
     let reference_timeInputs = reference_innerDoc.getElementById('timeInputs')
     let reference_cancel = reference_innerDoc.getElementById('cancel');
+    let reference_timeStart = reference_innerDoc.getElementById('timeStart')
+    let reference_timeEnd = reference_innerDoc.getElementById('timeEnd')
     
     
 
@@ -360,10 +377,18 @@
     let user_fileDisplay = user_innerDoc.getElementById('fileDisplay');
     let user_timeInputs = user_innerDoc.getElementById('timeInputs');
     let user_cancel = user_innerDoc.getElementById('cancel');
+    let user_timeStart = user_innerDoc.getElementById('timeStart')
+    let user_timeEnd = user_innerDoc.getElementById('timeEnd')
+
+    
+    let loading = document.getElementById('loading')
 
     reference_innerDoc.getElementById('title').innerHTML = "Upload Reference Dance (mp4 Format)"
     user_innerDoc.getElementById('title').innerHTML = "Upload Your Dance (mp4 Format)"
     
+    let output = document.getElementById('output')
+    let uploads = document.getElementById('uploads')
+    //    "/static/videos/" + reference_file.filename
     let reference_file = null;
     let user_file 
 
@@ -453,41 +478,40 @@
     button.onclick = function() {
         let referenceVideo = null;
         let userVideo = null;
-
-        const formData = new FormData();
+        let userstring =String('')
+        let referencestring = String('')
+        
+        let formData = new FormData();
         if (reference_youtube.style.display === "none"){
-          // referenceVideo = reference_file
-          // let blob = new Blob([reference_file], {type: reference_file.type})
-          // let link = document.createElement("a")
-          // link.href = window.URL.createObjectURL(blob)
-          // link.download = "referenceVideo"
-
-          // document.body.appendChild(link)
-          // link.click()
-          // document.body.removeChild(link)
-          // window.URL.revokeObjectURL(link.href)
-
+          referencestring='/static/videos/' + reference_file.name + " " + reference_timeStart.value + " " + reference_timeEnd.value
           formData.append('reference_video', reference_file)
         }
-        else /*if(reference_youtube.style.display!="none")*/{
-          // referenceVideo = reference_youtube_text.value;
-          formData.append('reference_video', new Blob([reference_youtube_text.value], {type:'text/plain'}))
+        else {
+          console.log(2)
+          referencestring = reference_youtube_text.value + " " + referenceStart.value + " " + referenceEnd.value
+          // formData.append('reference_video', new Blob([reference_youtube_text.value], {type:'text/plain'}))
         }          
         if (user_youtube.style.display === "none"){
-          // userVideo = user_file;
+          userstring = "/static/videos/" + user_file.name + " " +  user_timeStart.value + " " + user_timeEnd.value
           formData.append('user_video', user_file)
         }
         else{
-          // userVideo = user_youtube_text.value;
-          formData.append('user_video', new Blob([user_youtube_text.value], {type:'text/plain'}))
+          // formData.append('user_video', new Blob([user_youtube_text.value], {type:'text/plain'}))
+          userstring = user_youtube_text.value + " " + userStart.value + " " + userEnd.value
+          // userstring = "hiuhih"
         }
-
+        console.log(referencestring)
+        console.log(userstring)
+        formData.append('blob', new Blob([referencestring + "\n" + userstring], {type: 'text/plain'}))
         fetch('/upload', {method: 'POST', body: formData})
         
-        // console.log(referenceVideo instanceof Blob)
-        // console.log(userVideo instanceof Blob)
+        // output.style.display = "block"
+        uploads.style.display = "none"
+        button.style.display = "none"
+        user_youtube.style.display = "none"
+        reference_youtube.style.display = "none"
+        loading.style.display = "block"
       }
-
   </script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for, redirect, request
+import os
 
 app = Flask(__name__)
 
@@ -32,19 +33,39 @@ def uploadFiles(upload1, upload2, times):
 
 @app.route('/upload', methods=['POST'])
 def upload_files():
-    print("DOING STUFF")
+    # Assuming 'static/videos/' is the directory where you want to save the files
+    target_directory = os.path.join(app.root_path, 'static', 'videos')
+    os.makedirs(target_directory, exist_ok=True)  # Ensure the directory exists
 
-    # print(request.files['reference_video'])
-    # print(request.files['user_video'])
+    # referenceFile = request.files['reference_video']
+    # userFile = request.files['user_video']
+    # referenceFile = request.files['reference_video']
+    # if referenceFile:
+    if 'reference_video' in request.files:
+        referenceFile = request.files['reference_video']
+        referenceFilePath = os.path.join(target_directory, referenceFile.filename)
+        referenceFile.save(referenceFilePath)
 
-    referenceFile = request.files['reference_video']
-    userFile = request.files['user_video']
-
-    referenceFile.save('/')
-    userFile.save('/static/videos/')
-
-    return "yay"
+    if 'user_video' in request.files:
+        userFile = request.files['user_videos']
+        userFilePath = os.path.join(target_directory, userFile.filename)
+        userFile.save(userFilePath)
     
+
+
+
+    blob = request.files['blob']
+    blobPath = os.path.join(target_directory, blob.filename)
+    blob.save(blobPath)
+
+    print("SAVED")
+    # referenceFilePath = os.path.join(target_directory, referenceFile.filename)
+    # userFilePath = os.path.join(target_directory, userFile.filename)
+
+    # referenceFile.save(referenceFilePath)
+    # userFile.save(userFilePath)
+
+    return "YAY"    
 app.debug = True
 
 if __name__ == "__main__":
