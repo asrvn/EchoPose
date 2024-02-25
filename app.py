@@ -29,6 +29,21 @@ def uploadFiles(upload1, upload2, times):
     print(times)
     return render_template('loading.html')
     # return redirect(url_for('main_page'))
+
+@app.route('/upload', methods=['POST'])
+def upload_files():
+    print("DOING STUFF")
+
+    # print(request.files['reference_video'])
+    # print(request.files['user_video'])
+
+    referenceFile = request.files['reference_video']
+    userFile = request.files['user_video']
+
+    referenceFile.save('/')
+    userFile.save('/static/videos/')
+
+    return "yay"
     
 app.debug = True
 

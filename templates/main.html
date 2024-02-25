@@ -102,7 +102,6 @@
         .h3 {
         font-size: 24px;
         }
-
         .col-md-4 {
             float: left;
             width : 33.33333%;
@@ -172,6 +171,19 @@
         height: 50px;
         }
 
+
+
+
+        .button {
+        background-color: rgb(0, 0, 0);
+        border-radius: 10px;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        /* .button:hover{
+
+        } */
+      }
+
     </style>
 </head>
 <body>
@@ -208,31 +220,36 @@
 
     <!-- <div w3-include-html="/static/file_upload.html"></div> -->
     <!-- <object type="text" data="file_upload.html" width="50%" height="50%"></object> -->
-    <div style="margin-bottom: 50px">
-      <iframe src="/static/html/file_upload.html" width="700px" height="700px" style="border: none; margin-left:7%; margin-top: 2%" id="reference_upload"></iframe>
-      <iframe src="/static/html/file_upload.html" width="700px" height="700px" style="border: none; margin-right: 7%; margin-top: 2%; float:right" id="user_upload"></iframe>
-    </div>
-    <div style="float:left; text-align: right; margin-left: 15%;">
-      <div style="margin-bottom:5px">
-        <label for ="Youtube URL" > Youtube URL:</label>
-        <input class="yt-textbox" type="text" class="centered-textbox" id="referenceYT" name="Youtube URL" placeholder="https://www.youtube.com/watch?v=jNQXAC9IVRw&vl=en"><br>
+    <div>
+      <div style="margin-bottom: 50px">
+        <iframe src="/static/html/file_upload.html" width="700px" height="700px" style="border: none; margin-left:7%; margin-top: 2%" id="reference_upload"></iframe>
+        <iframe src="/static/html/file_upload.html" width="700px" height="700px" style="border: none; margin-right: 7%; margin-top: 2%; float:right" id="user_upload"></iframe>
       </div>
-    <div style ="margin-bottom: 5px">
-      <label for ="Youtube URL" > Start Time:</label>
-      <input class="yt-textbox" type="text" class="centered-textbox" id="referenceStart" name="Youtube URL" placeholder="mm:ss"><br>
+      
+      
+      <div id="reference_youtube" style="float:left; text-align: right; margin-left: 15%; display:block">
+        <div style="margin-bottom:5px">
+          <label for ="Youtube URL" > Youtube URL:</label>
+          <input class="yt-textbox" id="reference_youtube_text" type="text" class="centered-textbox" name="Youtube URL" placeholder="https://www.youtube.com/watch?v=jNQXAC9IVRw&vl=en"><br>
+        </div>
+      <div style ="margin-bottom: 5px">
+        <label for ="Youtube URL" > Start Time:</label>
+        <input class="yt-textbox" type="text" class="centered-textbox" id="referenceStart" name="Youtube URL" placeholder="mm:ss"><br>
+      </div>
+        <label for ="Youtube URL"> End Time:</label>
+        <input class="yt-textbox" type="text" class="centered-textbox" id="referenceEnd" name="Youtube URL" placeholder="mm:ss">
+      </div>
     </div>
-      <label for ="Youtube URL"> End Time:</label>
-      <input class="yt-textbox" type="text" class="centered-textbox" id="referenceEnd" name="Youtube URL" placeholder="mm:ss">
-    </div>
 
 
 
 
 
-    <div style="float:right; text-align: right; margin-right: 18%;">
+
+    <div id="user_youtube" style="float:right; text-align: right; margin-right: 18%; display:block">
       <div style="margin-bottom: 5px;">
       <label for ="Youtube URL"> Youtube URL:</label>
-      <input class="yt-textbox" type="text" class="centered-textbox" id="userYT" name="Youtube URL" placeholder="https://www.youtube.com/watch?v=jNQXAC9IVRw&vl=en"> <br>
+      <input class="yt-textbox" id="user_youtube_text" type="text" class="centered-textbox" name="Youtube URL" placeholder="https://www.youtube.com/watch?v=jNQXAC9IVRw&vl=en"> <br>
       </div>
       <div style = "margin-bottom: 5px;">
       <label for ="Youtube URL" > Start Time:</label>
@@ -246,8 +263,8 @@
 
 
     <br>
-    <div style="text-align: center;">
-      <button onclick="">Submit</button>
+    <div >
+      <button class="button" id="button" onclick="" style="font-family: 'Space Mono',monospace; font-size: 25px; text-align: center;">SUBMIT</button>
     </div>
     
     <div style="margin:2%">
@@ -313,10 +330,11 @@
 
       includeHTML();
       
-        
-      let yt = document.getElementById('Youtube URL')
+      //document.querySelectorAll(".class")
       // console.log(yt)
-    
+      // if (document.getElementById('button').clicked==true) {
+      
+//if (reference_youtube.getAttribute('display') === "none")
       function name(inp) {
       // console.log(yt.value)
     }
@@ -325,15 +343,31 @@
   <script>
     let reference_upload = document.getElementById('reference_upload');
     let user_upload = document.getElementById('user_upload');
+    let reference_youtube = document.getElementById('reference_youtube')
+    let user_youtube = document.getElementById('user_youtube')
 
     let reference_innerDoc = reference_upload.contentDocument || reference_upload.contentWindow.document;
     let reference_dropBox = reference_innerDoc.getElementById('dropBox');
     let reference_fileDisplay = reference_innerDoc.getElementById('fileDisplay');
+    let reference_timeInputs = reference_innerDoc.getElementById('timeInputs')
+    let reference_cancel = reference_innerDoc.getElementById('cancel');
+    
+    
 
+    
     let user_innerDoc = user_upload.contentDocument || user_upload.contentWindow.document;
     let user_dropBox = user_innerDoc.getElementById('dropBox');
-    let user_fileDisplay = user_innerDoc.getElementById('fileDisplay')
+    let user_fileDisplay = user_innerDoc.getElementById('fileDisplay');
+    let user_timeInputs = user_innerDoc.getElementById('timeInputs');
+    let user_cancel = user_innerDoc.getElementById('cancel');
+
+    reference_innerDoc.getElementById('title').innerHTML = "Upload Reference Dance (mp4 Format)"
+    user_innerDoc.getElementById('title').innerHTML = "Upload Your Dance (mp4 Format)"
     
+    let reference_file = null;
+    let user_file 
+
+
     reference_dropBox.addEventListener('dragover', function(e) {
         e.preventDefault();
         reference_dropBox.style.backgroundColor = '#f0f0f0';
@@ -369,10 +403,12 @@
     //display:flex
     function handleDroppedReferenceFile(file) {
         if (file.type.includes("mp4")) {
-          console.log(file)
           reference_dropBox.style.display = "none"
           reference_fileDisplay.innerHTML = file.name
           reference_fileDisplay.style.display = "block"
+          reference_timeInputs.style.display = "block"
+          reference_file = file
+          reference_youtube.style.display = "none"
         }
     }
 
@@ -381,8 +417,76 @@
         user_dropBox.style.display = "none"
         user_fileDisplay.innerHTML = file.name
         user_fileDisplay.style.display = "block"
+        user_timeInputs.style.display = "block"
+        user_file = file
+        user_youtube.style.display = "none"
       }
     }
+
+    reference_cancel.onclick = function() {
+      reference_dropBox.style.display = "flex"
+      reference_fileDisplay.innerHTML = ""
+      reference_fileDisplay.style.display = "none"
+      reference_timeInputs.style.display = "none"
+      reference_file = null
+      reference_youtube.style.display = "block"
+    };
+
+    user_cancel.onclick = function() {
+      user_dropBox.style.display = "flex"
+      user_fileDisplay.innerHTML = ""
+      user_fileDisplay.style.display = "none"
+      user_timeInputs.style.display = "none"
+      user_file = null
+      user_youtube.style.display = "block"
+    }
+
+    let reference_youtube_text = document.getElementById('reference_youtube_text')
+    let user_youtube_text = document.getElementById('user_youtube_text')
+    let referenceStart = document.getElementById('referenceStart')
+    let userStart = document.getElementById('userStart')
+    let referenceEnd = document.getElementById('referenceEnd')
+    let userEnd = document.getElementById('userEnd')
+
+
+    let button = document.getElementById('button')
+    button.onclick = function() {
+        let referenceVideo = null;
+        let userVideo = null;
+
+        const formData = new FormData();
+        if (reference_youtube.style.display === "none"){
+          // referenceVideo = reference_file
+          // let blob = new Blob([reference_file], {type: reference_file.type})
+          // let link = document.createElement("a")
+          // link.href = window.URL.createObjectURL(blob)
+          // link.download = "referenceVideo"
+
+          // document.body.appendChild(link)
+          // link.click()
+          // document.body.removeChild(link)
+          // window.URL.revokeObjectURL(link.href)
+
+          formData.append('reference_video', reference_file)
+        }
+        else /*if(reference_youtube.style.display!="none")*/{
+          // referenceVideo = reference_youtube_text.value;
+          formData.append('reference_video', new Blob([reference_youtube_text.value], {type:'text/plain'}))
+        }          
+        if (user_youtube.style.display === "none"){
+          // userVideo = user_file;
+          formData.append('user_video', user_file)
+        }
+        else{
+          // userVideo = user_youtube_text.value;
+          formData.append('user_video', new Blob([user_youtube_text.value], {type:'text/plain'}))
+        }
+
+        fetch('/upload', {method: 'POST', body: formData})
+        
+        // console.log(referenceVideo instanceof Blob)
+        // console.log(userVideo instanceof Blob)
+      }
 
   </script>
 </body>
