@@ -9,12 +9,17 @@ def main_page():
 
 @app.route('/foo')
 def pleaseWork():
-    return render_template('video.html')
+    return render_template('file_upload.html')
 
 @app.route('/test')
 def test():
     return render_template('loading.html')
 
+
+
+@app.route('/output')
+def output():
+    return render_template('ytTest.html')
 @app.route('/file_upload/<upload1>/<upload2>/<times>')
 def uploadFiles(upload1, upload2, times):
 #process
@@ -23,7 +28,6 @@ def uploadFiles(upload1, upload2, times):
     print(times)
     return render_template('loading.html')
     # return redirect(url_for('main_page'))
-
 app.debug = True
 
 if __name__ == "__main__":

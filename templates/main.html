@@ -163,7 +163,7 @@
         text-align: center;
         margin-top: 35px;
         letter-spacing: 3px;
-        font-weight: 500;
+        font-weight: 500; 
         color: #34495e;
         text-transform: capitalize;
         }
@@ -191,10 +191,33 @@
         Your browser does not support the video tag.
       </video>
     </div> -->
-    
-    
-    <div class="section" id="about"><h1>About</h1><hr></div>
 
+    <!-- <div style="display: block">
+      <div style="text-align: center; border: 1px solid black; width: 25%; float: left; margin-left: 5%; margin-top: 2%;">
+        <h3>Input Reference Dance (As an mp4 file)</h3>
+        <br><br><br><br><br><br><br>s
+        <input type="file" id="reference_upload" name="reference" accept="video/mp4" style="font-size: large;">
+      </div>
+      <div style="text-align: center; border: 1px solid black; width: 25%; float : right; margin-right: 5%; margin-top: 2%;">
+        <h3>Input Your Dance (As an mp4 file)</h3>
+        <br><br><br><br><br><br><br>
+      </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="section" id="about"><h1>About</h1><hr></div> -->
+
+    <!-- <div w3-include-html="/static/file_upload.html"></div> -->
+    <!-- <object type="text" data="file_upload.html" width="50%" height="50%"></object> -->
+    <div>
+      <iframe src="/static/html/file_upload.html" width="560px" height="700px" style="border: none; margin-left:7%; margin-top: 2%"></iframe>
+      <iframe src="/static/html/file_upload.html" width="475px" height="528px" style="border: none; margin-right: 7%; margin-top: 2%; float:right"></iframe>
+    </div>
+    
+
+    
+    <div style="margin:2%">
+    </div>
+    
 
     <!-- About Me -->
     <div class="container">
@@ -221,9 +244,37 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <!-- <script></script> -->
     <script>
-    // AOS.init();
         AOS.init({duration: 2400,}); 
+        
+        function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /* Loop through a collection of all HTML elements: */
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /* Make an HTTP request using the attribute value as the file name: */
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /* Remove the attribute, and call this function once more: */
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /* Exit the function: */
+      return;
+    }
+  }
+}
 
+      includeHTML();
     </script>
     
 </body>

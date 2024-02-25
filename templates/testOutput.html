@@ -1,0 +1,64 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parent Page</title>
+  </head>
+  <body>
+    <h2>Container</h2>
+    <textarea id="output" cols="30" rows="10" disabled>awaiting data...</textarea>
+    <div>
+      <input type="text" id="field" value="type something fun here" />
+      <button id="send">Send</button>
+    </div>
+    <div>
+      <iframe
+        height="500px"
+        id="inner"
+        src="/static/iframetest.html"
+        frameborder="0"
+      ></iframe>
+    </div>
+    <script>
+        // assign variables with references to the DOM nodes we will be interacting with
+        const output = document.getElementById("output");
+        const iframe = document.getElementById("inner");
+        const button = document.getElementById("send");
+        const field = document.getElementById("field");
+        // we will assign this value once the iframe is ready
+        let iWindow = null;
+  
+        // This event listener will run when we click the send button
+        button.addEventListener("click", () => {
+          // don't do anything if the iframe isn't ready yet
+          if (iWindow === null) {
+            return;
+          }
+  
+          // otherwise, get the value of our text input
+          const text = field.value;
+  
+          // and send it to the embedded page
+          iWindow.postMessage(text);
+        });
+  
+        // This event listener will run when the embedded page sends us a message
+        window.addEventListener("message", (event) => {
+          // extract the data from the message event
+          const { data } = event;
+  
+          // display it in our textarea as formatted JSON
+          output.value = JSON.stringify(data, null, 2);
+        });
+  
+        // Once the iframe is done loading, assign its window object to the variable we prepared earlier
+        iframe.addEventListener("load", () => {
+          iWindow = iframe.contentWindow;
+        });
+      </script>
+  
+  
+  </body>
+</html>
