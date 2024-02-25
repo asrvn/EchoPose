@@ -64,7 +64,7 @@ def coordinates(cropprocessed):
 
     return lshoulderx, lshouldery, rshoulderx, rshouldery, lelbowx, lelbowy, relbowx, relbowy, lwristx, lwristy, rwristx, rwristy, rhipx, rhipy, lhipx, lhipy, rkneex, rkneey, lkneex, lkneey, ranklex, rankley, lanklex, lankley
 
-with mp_pose.Pose(min_detection_confidence = 0.8, min_tracking_confidence = 0.8) as pose:
+with mp_pose.Pose(min_detection_confidence = 0.6, min_tracking_confidence = 0.6) as pose:
 
     log = open("log.txt", "w")
 
@@ -75,7 +75,7 @@ with mp_pose.Pose(min_detection_confidence = 0.8, min_tracking_confidence = 0.8)
         if not read:
 
             print("Dropped a Frame")
-            continue
+            break
 
         cv2.imwrite("temp.png", canvas)
         image = mp.Image.create_from_file("temp.png")
