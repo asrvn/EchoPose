@@ -87,7 +87,7 @@ with mp_pose.Pose(min_detection_confidence = 0.8, min_tracking_confidence = 0.8)
 
             log.write("None, " * 23 + "None\n")
 
-        cv2.imshow("EchoPose", cv2.flp(canvas, 1)) # Flip video
+        cv2.imshow("EchoPose", cv2.flip(canvas, 1)) # Flip video
 
         if cv2.waitKey(5) & 0xFF in (27, 81, 113):
 
