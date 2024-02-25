@@ -38,7 +38,11 @@
     justify-content: space-between;
     padding: 2.25rem 2.25rem 1.5rem; /* 1.5rem * 1.5 */
   }
-  
+  /* .modal-logo {
+    text-align:center;
+    font-family:"Space Mono", monospace;
+    color:#FFF;
+  } */
   .logo-circle {
     width: 5.25rem; /* 3.5rem * 1.5 */
     height: 5.25rem; /* 3.5rem * 1.5 */
@@ -74,6 +78,7 @@
   .modal-title {
     font-weight: 700;
     font-size: 1.5em; /* Increase font size */
+    color:#000000
   }
   
   .modal-description {
@@ -126,6 +131,10 @@
     font-weight: 700;
     font-size: 1.5em;
   } */
+  .modal-footer-container {
+    display: table-cell;
+    vertical-align: text-bottom;
+  }
   
   .modal-footer {
     padding: 1.5rem 2.25rem 2.25rem; /* 1rem * 1.5 */
